@@ -1,0 +1,41 @@
+{
+    "require": {
+        "php": "^8.4",
+        "psr/log": "^3.0.2"
+    },
+    "require-dev": {
+        "kubawerlos/php-cs-fixer-config": "^4.7",
+        "phpstan/extension-installer": "^1.4.3",
+        "phpstan/phpstan": "^2.1.11",
+        "phpstan/phpstan-phpunit": "^2.0.6",
+        "phpstan/phpstan-strict-rules": "^2.0.4",
+        "phpunit/phpunit": "^12.1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "BankAccountAndPayment\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "./tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "fix": [
+            "php-cs-fixer fix -vvv"
+        ],
+        "verify": [
+            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+            "php-cs-fixer check -vvv",
+            "phpstan",
+            "phpunit"
+        ]
+    },
+    "classmap-authoritative": true
+}
